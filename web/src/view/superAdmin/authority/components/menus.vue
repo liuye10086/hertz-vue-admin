@@ -216,7 +216,7 @@ export default {
 </script>
 
 <style lang="scss" scope>
-@import "@/style/button.scss";
+@use "../../../../style/button.scss" as *;
 .custom-tree-node{
   span+span{
     margin-left: 12px;

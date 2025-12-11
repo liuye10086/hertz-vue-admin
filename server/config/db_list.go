@@ -7,7 +7,7 @@ type DsnProvider interface {
 // Embeded 结构体可以压平到上一层，从而保持 config 文件的结构和原来一样
 // 见 playground: https://go.dev/play/p/KIcuhqEoxmY
 
-// GeneralDB 也被 Pgsql 和 Mysql 原样使用
+// GeneralDB 作为多数据源基础配置（当前仅支持 Mysql）
 type GeneralDB struct {
 	Path         string `mapstructure:"path" json:"path" yaml:"path"`                               // 服务器地址:端口
 	Port         string `mapstructure:"port" json:"port" yaml:"port"`                               //:端口

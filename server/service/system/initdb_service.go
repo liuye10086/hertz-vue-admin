@@ -13,7 +13,6 @@ import (
 
 const (
 	Mysql           = "mysql"
-	Pgsql           = "pgsql"
 	InitSuccess     = "\n[%v] --> 初始数据成功!\n"
 	InitDataExist   = "\n[%v] --> %v 的初始数据已存在!\n"
 	InitDataFailed  = "\n[%v] --> %v 初始数据失败! \nerr: %+v\n"
@@ -99,9 +98,6 @@ func (initDBService *InitDBService) InitDB(conf request.InitDB) (err error) {
 	case "mysql":
 		initHandler = NewMysqlInitHandler()
 		ctx = context.WithValue(ctx, "dbtype", "mysql")
-	case "pgsql":
-		initHandler = NewPgsqlInitHandler()
-		ctx = context.WithValue(ctx, "dbtype", "pgsql")
 	default:
 		initHandler = NewMysqlInitHandler()
 		ctx = context.WithValue(ctx, "dbtype", "mysql")

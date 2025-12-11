@@ -9,9 +9,10 @@
 </template>
 
 <script setup>
-import marked from 'marked'
+import { marked } from 'marked'
 import hljs from 'highlight.js'
-import 'highlight.js/styles/atelier-plateau-light.css'
+// 使用 highlight.js 新版内置主题，替换掉已移除的旧样式
+import 'highlight.js/styles/github.css'
 import { ElMessage } from 'element-plus'
 import { onMounted, ref } from 'vue'
 
@@ -35,16 +36,14 @@ onMounted(() => {
     gfm: true,
     tables: true,
     breaks: false,
-    sanitize: false,
     smartLists: true,
-    smartypants: false,
-    xhtml: false
+    smartypants: false
   })
   for (const key in props.previewCode) {
     if (activeName.value === '') {
       activeName.value = key
     }
-    document.getElementById(key).innerHTML = marked(props.previewCode[key])
+    document.getElementById(key).innerHTML = marked.parse(props.previewCode[key])
   }
 })
 

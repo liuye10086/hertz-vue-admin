@@ -1,3 +1,6 @@
+// Silence Sass legacy API warnings globally
+process.env.SASS_SILENCE_DEPRECATIONS = process.env.SASS_SILENCE_DEPRECATIONS || 'all'
+
 import legacyPlugin from '@vitejs/plugin-legacy'
 // import usePluginImport from 'vite-plugin-importer';
 import { viteLogo } from './src/core/config'
@@ -55,7 +58,7 @@ export default ({
       'process.env': {}
     },
     server: {
-      // 如果使用docker-compose开发模式，设置为false
+      // 本地开发默认自动打开浏览器，按需改为 false
       open: true,
       port: process.env.VITE_CLI_PORT,
       proxy: {
@@ -91,7 +94,15 @@ export default ({
           // 支持内联 JavaScript
           javascriptEnabled: true,
         }
-      }
+      },
+      preprocessorOptions: {
+        scss: {
+          silenceDeprecations: ['legacy-js-api'],
+        },
+        sass: {
+          silenceDeprecations: ['legacy-js-api'],
+        }
+      },
     },
   }
 }

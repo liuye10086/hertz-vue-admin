@@ -226,5 +226,5 @@ const checkInit = async() => {
 </script>
 
 <style lang="scss" scoped>
-@import "@/style/newLogin.scss";
+@use "../../style/newLogin.scss" as *;
 </style>

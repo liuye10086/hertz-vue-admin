@@ -17,8 +17,6 @@ func Gorm() *gorm.DB {
 	switch global.CONFIG.System.DbType {
 	case "mysql":
 		return GormMysql()
-	case "pgsql":
-		return GormPgSql()
 	default:
 		return GormMysql()
 	}

@@ -24,7 +24,6 @@
           <el-form-item label="数据库类型">
             <el-select v-model="form.dbType" placeholder="请选择" @change="changeDB">
               <el-option key="mysql" label="mysql" value="mysql" />
-              <el-option key="pgsql" label="pgsql" value="pgsql" />
             </el-select>
           </el-form-item>
           <el-form-item label="host">
@@ -97,16 +96,6 @@ const changeDB = (val) => {
         host: '127.0.0.1',
         port: '3306',
         userName: 'root',
-        password: '',
-        dbName: 'gva'
-      })
-      break
-    case 'pgsql':
-      Object.assign(form, {
-        dbType: 'pgsql',
-        host: '127.0.0.1',
-        port: '5432',
-        userName: 'postgres',
         password: '',
         dbName: 'gva'
       })

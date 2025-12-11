@@ -514,7 +514,7 @@ const getColumnFunc = async() => {
                 dataType: item.dataType,
                 fieldJson: fbHump,
                 dataTypeLong: item.dataTypeLong && item.dataTypeLong.split(',')[0],
-                columnName: dbtype == 'oracle' ? item.columnName.toUpperCase() : item.columnName,
+                columnName: item.columnName,
                 comment: item.columnComment,
                 require: false,
                 errorText: '',

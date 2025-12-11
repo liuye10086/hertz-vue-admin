@@ -17,16 +17,11 @@
           <el-form-item label="数据库类型">
             <el-select v-model="config.system['db-type']" style="width:100%">
               <el-option value="mysql" />
-              <el-option value="pgsql" />
             </el-select>
           </el-form-item>
           <el-form-item label="Oss类型">
             <el-select v-model="config.system['oss-type']" style="width:100%">
-              <el-option value="local" />
-              <el-option value="qiniu" />
-              <el-option value="tencent-cos" />
               <el-option value="aliyun-oss" />
-              <el-option value="huawei-obs" />
             </el-select>
           </el-form-item>
           <el-form-item label="多点登录拦截">
@@ -167,98 +162,9 @@
               <el-input v-model="config.mysql['log-mode']" />
             </el-form-item>
           </template>
-          <template v-if="config.system.dbType === 'pgsql'">
-            <el-form-item label="用户名">
-              <el-input v-model="config.pgsql.username" />
-            </el-form-item>
-            <el-form-item label="密码">
-              <el-input v-model="config.pgsql.password" />
-            </el-form-item>
-            <el-form-item label="地址">
-              <el-input v-model="config.pgsql.path" />
-            </el-form-item>
-            <el-form-item label="数据库">
-              <el-input v-model="config.pgsql.dbname" />
-            </el-form-item>
-            <el-form-item label="前缀">
-              <el-input v-model="config.pgsql['refix']" />
-            </el-form-item>
-            <el-form-item label="复数表">
-              <el-switch v-model="config.pgsql['singular']" />
-            </el-form-item>
-            <el-form-item label="引擎">
-              <el-input v-model="config.pgsql['engine']" />
-            </el-form-item>
-            <el-form-item label="maxIdleConns">
-              <el-input v-model.number="config.pgsql['max-idle-conns']" />
-            </el-form-item>
-            <el-form-item label="maxOpenConns">
-              <el-input v-model.number="config.pgsql['max-open-conns']" />
-            </el-form-item>
-            <el-form-item label="写入日志">
-              <el-checkbox v-model="config.pgsql['log-zap']" />
-            </el-form-item>
-            <el-form-item label="日志模式">
-              <el-input v-model="config.pgsql['log-mode']" />
-            </el-form-item>
-          </template>
         </el-collapse-item>
 
         <el-collapse-item title="oss配置" name="10">
-          <template v-if="config.system['oss-type'] === 'local'">
-            <h2>本地文件配置</h2>
-            <el-form-item label="本地文件访问路径">
-              <el-input v-model="config.local.path" />
-            </el-form-item>
-            <el-form-item label="本地文件存储路径">
-              <el-input v-model="config.local['store-path']" />
-            </el-form-item>
-          </template>
-          <template v-if="config.system['oss-type'] === 'qiniu'">
-            <h2>qiniu上传配置</h2>
-            <el-form-item label="存储区域">
-              <el-input v-model="config.qiniu.zone" />
-            </el-form-item>
-            <el-form-item label="空间名称">
-              <el-input v-model="config.qiniu.bucket" />
-            </el-form-item>
-            <el-form-item label="CDN加速域名">
-              <el-input v-model="config.qiniu['img-path']" />
-            </el-form-item>
-            <el-form-item label="是否使用https">
-              <el-checkbox v-model="config.qiniu['use-https']">开启</el-checkbox>
-            </el-form-item>
-            <el-form-item label="accessKey">
-              <el-input v-model="config.qiniu['access-key']" />
-            </el-form-item>
-            <el-form-item label="secretKey">
-              <el-input v-model="config.qiniu['secret-key']" />
-            </el-form-item>
-            <el-form-item label="上传是否使用CDN上传加速">
-              <el-checkbox v-model="config.qiniu['use-cdn-domains']">开启</el-checkbox>
-            </el-form-item>
-          </template>
-          <template v-if="config.system['oss-type'] === 'tencent-cos'">
-            <h2>腾讯云COS上传配置</h2>
-            <el-form-item label="存储桶名称">
-              <el-input v-model="config['tencent-cos']['bucket']" />
-            </el-form-item>
-            <el-form-item label="所属地域">
-              <el-input v-model="config['tencent-cos'].region" />
-            </el-form-item>
-            <el-form-item label="secretID">
-              <el-input v-model="config['tencent-cos']['secret-id']" />
-            </el-form-item>
-            <el-form-item label="secretKey">
-              <el-input v-model="config['tencent-cos']['secret-key']" />
-            </el-form-item>
-            <el-form-item label="路径前缀">
-              <el-input v-model="config['tencent-cos']['path-prefix']" />
-            </el-form-item>
-            <el-form-item label="访问域名">
-              <el-input v-model="config['tencent-cos']['base-url']" />
-            </el-form-item>
-          </template>
           <template v-if="config.system['oss-type'] === 'aliyun-oss'">
             <h2>阿里云OSS上传配置</h2>
             <el-form-item label="区域">
@@ -275,24 +181,6 @@
             </el-form-item>
             <el-form-item label="访问域名">
               <el-input v-model="config['aliyun-oss']['bucket-url']" />
-            </el-form-item>
-          </template>
-          <template v-if="config.system['oss-type'] === 'huawei-obs'">
-            <h2>华为云Obs上传配置</h2>
-            <el-form-item label="路径">
-              <el-input v-model="config['hua-wei-obs'].path" />
-            </el-form-item>
-            <el-form-item label="存储桶名称">
-              <el-input v-model="config['hua-wei-obs'].bucket" />
-            </el-form-item>
-            <el-form-item label="区域">
-              <el-input v-model="config['hua-wei-obs'].endpoint" />
-            </el-form-item>
-            <el-form-item label="accessKey">
-              <el-input v-model="config['hua-wei-obs']['access-key']" />
-            </el-form-item>
-            <el-form-item label="secretKey">
-              <el-input v-model="config['hua-wei-obs']['secret-key']" />
             </el-form-item>
           </template>
 
@@ -389,17 +277,12 @@ const config = ref({
   },
   jwt: {},
   mysql: {},
-  pgsql: {},
   excel: {},
   autocode: {},
   redis: {},
-  qiniu: {},
-  'tencent-cos': {},
   'aliyun-oss': {},
-  'hua-wei-obs': {},
   captcha: {},
   zap: {},
-  local: {},
   email: {},
   timer: {
     detail: {}

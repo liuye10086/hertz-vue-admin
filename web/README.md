@@ -32,7 +32,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ``` lua
 web
  ├── babel.config.js
- ├── Dockerfile
  ├── favicon.ico
  ├── index.html                 -- 主页面
  ├── limit.js                   -- 助手代码

@@ -17,8 +17,6 @@ func (autoCodeService *AutoCodeService) Database(businessDB string) Database {
 		switch global.CONFIG.System.DbType {
 		case "mysql":
 			return AutoCodeMysql
-		case "pgsql":
-			return AutoCodePgsql
 		default:
 			return AutoCodeMysql
 		}
@@ -29,10 +27,6 @@ func (autoCodeService *AutoCodeService) Database(businessDB string) Database {
 				switch info.Type {
 				case "mysql":
 					return AutoCodeMysql
-				case "pgsql":
-					return AutoCodePgsql
-				case "oracle":
-					return AutoCodeOracle
 				default:
 					return AutoCodeMysql
 				}

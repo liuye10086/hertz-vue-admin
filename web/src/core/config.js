@@ -10,18 +10,24 @@ const config = {
 
 export const viteLogo = (env) => {
   if (config.showViteLogo) {
-    const chalk = require('chalk')
-    console.log(
-      chalk.green(
-        `> 欢迎使用Hertz-Vue-Admin，开源地址：https://github.com/EduFriendChen/hertz-vue-admin`
+    // chalk 为 ESM，仅在支持 import 的环境下使用
+    import('chalk').then(({ default: chalk }) => {
+      console.log(
+        chalk.green(
+          `> 欢迎使用Hertz-Vue-Admin，开源地址：https://github.com/EduFriendChen/hertz-vue-admin`
+        )
       )
-    )
-    console.log(
-      chalk.green(
-        `> 当前版本: 先行版`
+      console.log(
+        chalk.green(
+          `> 当前版本: 先行版`
+        )
       )
-    )
-    console.log('\n')
+      console.log('\n')
+    }).catch(() => {
+      console.log('> 欢迎使用Hertz-Vue-Admin，开源地址：https://github.com/EduFriendChen/hertz-vue-admin')
+      console.log('> 当前版本: 先行版')
+      console.log('\n')
+    })
   }
 }
 

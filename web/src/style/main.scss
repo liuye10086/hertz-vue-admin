@@ -7,8 +7,8 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-@import '@/style/basics.scss';
-@import '@/style/iconfont.css';
+@use './basics.scss' as *;
+@import url('./iconfont.css');
 html {
     line-height: 1.15;
     /* 1 */

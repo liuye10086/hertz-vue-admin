@@ -24,8 +24,6 @@ func (w *writer) Printf(message string, data ...interface{}) {
 	switch global.CONFIG.System.DbType {
 	case "mysql":
 		logZap = global.CONFIG.Mysql.LogZap
-	case "pgsql":
-		logZap = global.CONFIG.Pgsql.LogZap
 	}
 	if logZap {
 		global.LOG.Info(fmt.Sprintf(message+"\n", data...))

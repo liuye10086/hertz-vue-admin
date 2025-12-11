@@ -1,4 +1,4 @@
-@import '@/style/basics.scss';
+@use './basics.scss' as *;
 @media screen and (min-width: 320px)and (max-width: 750px) {
     .el-header {
         padding: 0 $padding-xs;

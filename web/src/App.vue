@@ -11,10 +11,10 @@ export default {
 </script>
 
 <style lang="scss">
-// 引入初始化样式
-@import '@/style/main.scss';
-@import '@/style/base.scss';
-@import '@/style/mobile.scss';
+// 引入初始化样式（使用 @use）
+@use './style/main.scss' as *;
+@use './style/base.scss' as *;
+@use './style/mobile.scss' as *;
 #app {
   background: #eee;
   height: 100vh;
