@@ -1,3 +1,6 @@
+import { createRequire } from 'node:module'
+import { fileURLToPath, URL } from 'node:url'
+
 // Silence Sass legacy API warnings globally
 process.env.SASS_SILENCE_DEPRECATIONS = process.env.SASS_SILENCE_DEPRECATIONS || 'all'
 
@@ -11,6 +14,8 @@ import * as fs from 'fs'
 import vuePlugin from '@vitejs/plugin-vue'
 import GvaPosition from './vitePlugin/gvaPosition'
 import GvaPositionServer from './vitePlugin/codeServer'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // @see https://cn.vitejs.dev/config/
 export default ({
   command,
@@ -93,9 +98,7 @@ export default ({
         less: {
           // 支持内联 JavaScript
           javascriptEnabled: true,
-        }
-      },
-      preprocessorOptions: {
+        },
         scss: {
           silenceDeprecations: ['legacy-js-api'],
         },

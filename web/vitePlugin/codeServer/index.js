@@ -1,6 +1,7 @@
-const child_process = require('child_process')
+import * as child_process from 'child_process'
 import * as dotenv from 'dotenv'
 import * as fs from 'fs'
+import * as os from 'os'
 
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const envFiles = [
@@ -25,7 +26,7 @@ export default function GvaPositionServer() {
             if (process.env.VITE_EDITOR === 'webstorm') {
               const linePath = path.split(':')[1]
               const filePath = path.split(':')[0]
-              const platform = os()
+              const platform = getOS()
               if (platform === 'win32') {
                 child_process.exec(`webstorm64.exe  --line ${linePath} ${filePath}`)
               } else {
@@ -42,9 +43,8 @@ export default function GvaPositionServer() {
   }
 }
 
-function os() {
+function getOS() {
   'use strict'
-  const os = require('os')
   const platform = os.platform()
   switch (platform) {
     case 'darwin':

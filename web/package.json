@@ -1,6 +1,7 @@
 {
   "name": "gin-vue-admin",
   "version": "2.5.4",
+  "type": "module",
   "private": true,
   "scripts": {
     "serve": "cross-env SASS_SILENCE_DEPRECATIONS=all vite --host --mode development",

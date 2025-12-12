@@ -51,7 +51,7 @@ email:
 excel:
   dir: ./resource/excel/
 jwt:
-  signing-key: 8857c329-04a5-4a85-89ed-505667a03228
+  signing-key: 1053d828-6bf7-428a-8c81-60d6fd36fbcf
   expires-time: 7d
   buffer-time: 1d
   issuer: qmPlus
@@ -71,7 +71,7 @@ mysql:
   log-zap: false
 online-user:
   key: online-
-  oline-time: 30ns
+  oline-time: 0s
 redis:
   db: 1
   addr: 127.0.0.1:6379

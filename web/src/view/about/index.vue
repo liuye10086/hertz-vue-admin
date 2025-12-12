@@ -69,7 +69,7 @@
               <el-col v-for="(item, index) in members" :key="index" :span="8">
                 <a :href="item.html_url">
                   <img class="avatar-img" :src="item.avatar_url">
-                  <a class="author-name" style="">{{ item.login }}</a>
+                  <span class="author-name" style="">{{ item.login }}</span>
                 </a>
               </el-col>
             </el-row>
